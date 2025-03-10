@@ -39,7 +39,7 @@ runs:
       id: cache
       uses: actions/cache/restore@v3
       with:
-        path: ${{ env.ONEAPI_ROOT }}
+        path: "C:\Program Files (x86)\Intel"
         key: ${{ runner.os }}-${{ inputs.compiler }}-${{ inputs.version }}-${{ steps.get-date.outputs.date }}
 
     # Use micromamba for lfortran install on mac. Check if micromamba already
@@ -115,7 +115,7 @@ runs:
       if: runner.os == 'Windows' && contains(inputs.compiler, 'intel') && steps.cache.outputs.cache-hit != 'true'
       uses: actions/cache/save@v3
       with:
-        path: ${{ env.ONEAPI_ROOT }}
+        path: "C:\Program Files (x86)\Intel"
         key: ${{ runner.os }}-${{ inputs.compiler }}-${{ inputs.version }}-${{ steps.get-date.outputs.date }}
     - name: Activate oneAPI
       if: runner.os == 'Windows' && contains(inputs.compiler, 'intel')
