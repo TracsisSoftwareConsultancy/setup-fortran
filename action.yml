@@ -43,6 +43,7 @@ runs:
         key: ${{ runner.os }}-${{ inputs.compiler }}-${{ inputs.version }}-${{ steps.get-date.outputs.date }}
     - name: Set output for cache-hit status
       id: set-cache-status
+      shell: bash
       run: echo "::set-output name=cache-hit::${{ steps.cache.outputs.cache-hit }}"
 
     # Use micromamba for lfortran install on mac. Check if micromamba already
