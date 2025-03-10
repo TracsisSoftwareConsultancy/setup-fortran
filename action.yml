@@ -41,6 +41,9 @@ runs:
       with:
         path: C:\Program Files (x86)\Intel
         key: ${{ runner.os }}-${{ inputs.compiler }}-${{ inputs.version }}-${{ steps.get-date.outputs.date }}
+    - name: Set output for cache-hit status
+        id: set-cache-status
+        run: echo "::set-output name=cache-hit::${{ steps.cache.outputs.cache-hit }}"
 
     # Use micromamba for lfortran install on mac. Check if micromamba already
     # exists, only install it if needed. If we install it, clean it up after.
